@@ -7,7 +7,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
 
 @Data
 @NodeEntity
-public class Skill {
+public class Qualification {
 
     @Id
     @GeneratedValue

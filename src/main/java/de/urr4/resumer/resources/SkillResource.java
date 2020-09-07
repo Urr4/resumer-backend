@@ -20,8 +20,12 @@ public class SkillResource {
 
     private final Logger LOG = LoggerFactory.getLogger(SkillResource.class);
 
+    private final SkillRepository skillRepository;
+
     @Inject
-    private SkillRepository skillRepository;
+    public SkillResource(SkillRepository skillRepository) {
+        this.skillRepository = skillRepository;
+    }
 
     @GET
     public List<Skill> getAllSkills() {

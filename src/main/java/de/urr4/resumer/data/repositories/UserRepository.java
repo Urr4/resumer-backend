@@ -12,15 +12,19 @@ import javax.inject.Inject;
 @ApplicationScoped
 public class UserRepository {
 
-    @Inject
-    private SessionFactory sessionFactory;
-
     private final Logger LOG = LoggerFactory.getLogger(UserRepository.class);
+
+    private final SessionFactory sessionFactory;
+
+    @Inject
+    public UserRepository(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public User getUserById(Long id) {
         Session session = sessionFactory.openSession();
         User user = session.load(User.class, id);
-        LOG.info("Found user "+user);
+        LOG.info("Found user " + user);
         return user;
     }
 

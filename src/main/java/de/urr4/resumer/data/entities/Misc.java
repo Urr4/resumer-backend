@@ -7,12 +7,12 @@ import org.neo4j.ogm.annotation.NodeEntity;
 
 @Data
 @NodeEntity
-public class Skill {
+public class Misc {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private String name;
+    private String title;
 
 }

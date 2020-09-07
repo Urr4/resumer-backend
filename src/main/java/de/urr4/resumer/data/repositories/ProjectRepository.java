@@ -1,7 +1,6 @@
 package de.urr4.resumer.data.repositories;
 
 import de.urr4.resumer.data.entities.Project;
-import de.urr4.resumer.data.entities.User;
 import org.neo4j.ogm.session.Session;
 import org.neo4j.ogm.session.SessionFactory;
 import org.slf4j.Logger;
@@ -16,12 +15,16 @@ import java.util.stream.Collectors;
 @ApplicationScoped
 public class ProjectRepository {
 
-    @Inject
-    private SessionFactory sessionFactory;
-
     private final Logger LOG = LoggerFactory.getLogger(ProjectRepository.class);
 
-    public List<Project> getAllProjects(){
+    private final SessionFactory sessionFactory;
+
+    @Inject
+    public ProjectRepository(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    public List<Project> getAllProjects() {
         Session session = sessionFactory.openSession();
         Collection<Project> projects = session.loadAll(Project.class);
         return projects.stream().collect(Collectors.toList());
@@ -30,7 +33,7 @@ public class ProjectRepository {
     public Project getProjectById(Long id) {
         Session session = sessionFactory.openSession();
         Project project = session.load(Project.class, id);
-        LOG.info("Found Project "+project);
+        LOG.info("Found Project " + project);
         return project;
     }
 

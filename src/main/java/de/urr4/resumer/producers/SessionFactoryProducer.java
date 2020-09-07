@@ -14,13 +14,13 @@ public class SessionFactoryProducer {
     private static final String ENTITY_PACKAGE = "de.urr4.resumer.data.entities";
 
     @ConfigProperty(name = "neo4j.url")
-    private String neo4jUrl;
+    String neo4jUrl;
 
     @ConfigProperty(name = "neo4j.user")
-    private String neo4jUser;
+    String neo4jUser;
 
     @ConfigProperty(name = "neo4j.password")
-    private String neo4jPassword;
+    String neo4jPassword;
 
     @Produces
     public SessionFactory sessionFactory() {
